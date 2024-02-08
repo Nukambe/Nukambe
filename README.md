@@ -5,7 +5,7 @@
 
 - 🔭 I’m currently working on [Meal Planner](https://github.com/Nukambe/meal-planner-frontend)
 
-- 🌱 I’m currently studying for **AWS Certified Developer**
+- 🌱 I’m currently studying for **AZ-204**
 
 - 👨‍💻 All of my projects are available at [https://wesleychappell.com/](https://wesleychappell.com/)
 
