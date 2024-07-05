@@ -3,15 +3,13 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=nukambe&label=Profile%20views&color=0e75b6&style=flat" alt="nukambe" /> </p>
 
-- 🔭 I’m currently working on [Meal Planner](https://github.com/Nukambe/meal-planner-frontend)
+- 🔭 I’m currently working on [Meal Nav](https://github.com/Nukambe/mealnav)
 
-- 🌱 I’m currently studying for **AZ-204**
+- 🌱 I’m currently studying for my Bachelors in Software Engineering.
 
-- 👨‍💻 All of my projects are available at [https://wesleychappell.com/](https://wesleychappell.com/)
+- 👨‍💻 All of my projects are available at [https://wesleychappell.com/](https://www.wesleychappell.com/)
 
 - 💬 Ask me about **React, Angular, NestJS**
-
-- 📫 How to reach me **chappellwesley@gmail.com**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
