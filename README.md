@@ -1,5 +1,4 @@
 <h1 align="center">Hi 👋, I'm Wesley Chappell</h1>
-<h3 align="center">A passionate web developer based in the US.</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=nukambe&label=Profile%20views&color=0e75b6&style=flat" alt="nukambe" /> </p>
 
@@ -7,9 +6,7 @@
 
 - 🌱 I’m currently studying for my Bachelors in Software Engineering.
 
-- 👨‍💻 All of my projects are available at [https://wesleychappell.com/](https://www.wesleychappell.com/)
-
-- 💬 Ask me about **React, Angular, NestJS**
+- 👨‍💻 All of my projects are available at [www.wesleychappell.com](https://www.wesleychappell.com/)
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
