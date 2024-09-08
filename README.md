@@ -4,7 +4,9 @@
 
 - 🔭 I’m currently working on [Gym Nav](https://github.com/Nukambe/workout)
 
-- 🌱 I’m a recent grad with a Bachelors in Software Engineering.
+- 🌱 I’m a recent grad with a Bachelors in Software Engineering and completed a Software Engineering bootcamp.
+
+- I have 4+ years of professional IT support experience and am looking to contribute to organizations in a more hands-on role.
 
 - 👨‍💻 All of my projects are available at [www.wesleychappell.com](https://www.wesleychappell.com/)
 
