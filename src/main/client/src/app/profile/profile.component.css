@@ -1,0 +1,41 @@
+#parallax-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 400px;
+    border-radius: 500px;
+    overflow: hidden;
+    padding: 48px 48px 0px 48px;
+    background-image: url("/images/avatar-bg.jpg");
+    box-sizing: border-box;
+    margin: 2em auto 0;
+    box-shadow: 2px 2px 2px black;
+}
+
+#parallax-fg {
+    height: 400px;
+    /* transition: all 0.2s ease-out; */
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 0;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+h2 {
+    font-size: 18pt;
+}
+
+p {
+    max-width: 500px;
+    margin: 1em auto 0;
+    text-align: justify;
+    font-size: 16pt;
+    font-weight: 450;
+}

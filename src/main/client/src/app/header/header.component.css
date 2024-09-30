@@ -1,0 +1,24 @@
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--font-color);
+    font-weight: var(--link-weight);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: var(--content-width);
+    margin-left: var(--page-border);
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 1em;
+}
+
+img {
+    height: 24px;
+    margin-right: 4px;
+}

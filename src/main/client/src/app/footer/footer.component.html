@@ -1,0 +1,10 @@
+<footer>
+    <ul>
+        @for (link of navLinks; track $index) {
+            <li>
+                <!-- <img [src]="link.img" [alt]="link.link"> -->
+                <a [routerLink]="link.link == 'home' ? '' : link.link" [routerLinkActive]="'active'">{{ link.link.toUpperCase() }}</a>
+            </li>
+        }
+    </ul>
+</footer>

@@ -1,0 +1,19 @@
+#parallax-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 400px;
+    border-radius: 500px;
+    overflow: hidden;
+    padding: 48px 48px 0px 48px;
+    background-image: url("/images/avatar-bg.jpg");
+    box-sizing: border-box;
+    margin: auto;
+}
+
+#parallax-fg {
+    height: 400px;
+    transition: all 0.2s ease-out;
+}

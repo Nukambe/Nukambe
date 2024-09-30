@@ -1,0 +1,13 @@
+<button (click)="scrollLeft()">&lArr;</button>
+
+<div>
+    <ng-template #projectList>
+        <!-- @for (project of projects; track $index) {
+            <li [id]="project.id" [style]="projectStyle($index)" #projectLi>
+                <app-project [project]="project"></app-project>
+            </li>
+            } -->
+    </ng-template>
+</div>
+
+<button (click)="scrollRight()">&rArr;</button>
