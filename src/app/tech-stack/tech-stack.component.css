@@ -1,0 +1,28 @@
+:host {
+    --icon-size: 36px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 4px;
+    margin: 0;
+}
+
+li {
+    /* border: 1px solid black; */
+    border-radius: 64px;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, 1);
+}
+
+img {
+    height: var(--icon-size);
+}

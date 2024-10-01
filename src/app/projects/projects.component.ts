@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, ComponentRef, ElementRef, QueryList, Renderer2, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ComponentRef, ElementRef, OnInit, QueryList, Renderer2, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { ProjectComponent } from "./project/project.component";
 import { Project } from '../../models/Project.model';
+import { projectData } from '../../data/projects';
 
 @Component({
   selector: 'app-projects',
@@ -9,20 +10,19 @@ import { Project } from '../../models/Project.model';
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css'
 })
-export class ProjectsComponent implements AfterViewInit {
+export class ProjectsComponent implements OnInit, AfterViewInit {
 
   @ViewChild('projectList', { read: ViewContainerRef }) projectList!: ViewContainerRef;
   projectItems: ComponentRef<ProjectComponent>[] = [];
   focusedProject: number = 0;
 
-  projects: Project[] = [
-    new Project(0),
-    new Project(1),
-    new Project(2),
-    new Project(3)
-  ];
+  projects: Project[] = [];
 
   constructor(private renderer: Renderer2) { }
+
+  ngOnInit(): void {
+    this.projects = projectData;
+  }
 
   ngAfterViewInit(): void {
     this.initProjects();
@@ -43,6 +43,11 @@ export class ProjectsComponent implements AfterViewInit {
     const projectComponent = this.projectList.createComponent(ProjectComponent);
     projectComponent.setInput('project', project);
     this.renderer.setAttribute(projectComponent.location.nativeElement, 'id', "" + project.id);
+    this.renderer.setStyle(projectComponent.location.nativeElement, 'background-image', `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgb(255, 255, 255, 0.8), rgb(255, 255, 255)), url(${project.image})`);
+    const elements = projectComponent.location.nativeElement.querySelectorAll('*');
+    elements.forEach((element: HTMLElement) => {
+      this.renderer.setStyle(element, 'border-color', project.color);
+    });
     this.projectItems.push(projectComponent);
     projectComponent.onDestroy(() => {
       // const index = this.projectItems.indexOf(projectComponent);
@@ -52,7 +57,7 @@ export class ProjectsComponent implements AfterViewInit {
     return projectComponent;
   }
 
-  scrollLeft() {
+  scrollRight() {
     const rightProject = this.createProject(this.projects[(this.focusedProject + 2) % this.projects.length]);
     this.renderer.addClass(rightProject.location.nativeElement, 'created-right');
     this.focusedProject = (this.focusedProject + 1) % this.projects.length;
@@ -80,10 +85,19 @@ export class ProjectsComponent implements AfterViewInit {
     });
   }
 
-  scrollRight() {
-    const leftProject = this.createProject(this.projects[Math.abs(this.focusedProject - 2) % this.projects.length]);
+  scrollLeft() {
+    let target = this.focusedProject - 2;
+    if (target < 0) {
+      target = this.projects.length + target;
+    }
+
+    const leftProject = this.createProject(this.projects[target]);
     this.renderer.addClass(leftProject.location.nativeElement, 'created-left');
-    this.focusedProject = (this.focusedProject - 1) % this.projects.length;
+
+    this.focusedProject = this.focusedProject - 1;
+    if (this.focusedProject < 0) {
+      this.focusedProject = this.projects.length - 1;
+    }
 
     this.projectItems.forEach((project) => {
       const element = project.location.nativeElement as HTMLElement;

@@ -12,7 +12,7 @@ export class FooterComponent {
   navLinks = [
     { img: "/", link: "home" },
     { img: "/", link: "projects" },
-    { img: "/", link: "experience" },
+    // { img: "/", link: "experience" },
     { img: "/", link: "skills" },
     { img: "/", link: "testimonials" },
     { img: "/", link: "contact" },

@@ -1,10 +1,11 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, QueryList, ViewChildren } from '@angular/core';
 import { Project } from '../../../models/Project.model';
+import { TechStackComponent } from "../../tech-stack/tech-stack.component";
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [],
+  imports: [TechStackComponent],
   templateUrl: './project.component.html',
   styleUrl: './project.component.css',
 })

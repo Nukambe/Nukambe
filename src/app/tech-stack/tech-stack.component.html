@@ -1,0 +1,7 @@
+<ul>
+    @for (tech of techStack; track $index) {
+        <li>
+            <img [src]="imageSource(tech)" [alt]="tech" [title]="tech">
+        </li>
+    }
+</ul>

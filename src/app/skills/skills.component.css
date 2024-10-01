@@ -1,0 +1,49 @@
+:host {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas:
+        "a b"
+        "c c";
+}
+
+#certifications {
+    grid-area: a;
+    float: left;
+    border: 1px solid black;
+    padding: 16px;
+    min-width: 400px;
+    width: fit-content;
+    list-style-type: none;
+    box-sizing: border-box;
+    border-radius: 10px;
+    height: fit-content;
+    margin: 16px 36px;
+}
+
+#certifications h2 {
+    margin: 0;
+    padding: 0;
+}
+
+#certifications ul {
+    padding: 0;
+    list-style: none;
+}
+
+#skills {
+    grid-area: c;
+    padding: 16px 36px;
+}
+
+#skills ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap:  16px 32px;
+    width: 100%;
+    height: 100%;
+}
