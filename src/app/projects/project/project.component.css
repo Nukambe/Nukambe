@@ -48,7 +48,8 @@
     translate: 10vw;
 }
 
-:host.project-left, :host.project-right {
+:host.project-left,
+:host.project-right {
     scale: 0.7;
     z-index: 1;
     opacity: 0.8;
@@ -56,7 +57,8 @@
     filter: blur(2px);
 }
 
-:host.created-left, :host.created-right {
+:host.created-left,
+:host.created-right {
     scale: 0;
     z-index: 0;
     opacity: 0;
@@ -125,4 +127,53 @@
 
 .project-info p {
     margin: 0;
+}
+
+@media screen and (max-width: 900px) {
+    :host.created-right {
+        translate: 50vw;
+    }
+
+    :host.created-left {
+        translate: -50vw;
+    }
+
+    :host.project-left {
+        translate: -25vw;
+    }
+
+    :host.project-right {
+        translate: 25vw;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    :host.project-center {
+        scale: 0.75;
+    }
+
+    :host.project-left,
+    :host.project-right {
+        scale: 0.6;
+        z-index: 1;
+        opacity: 0.8;
+        pointer-events: none;
+        filter: blur(2px);
+    }
+
+    :host.created-right {
+        translate: 50vw;
+    }
+
+    :host.created-left {
+        translate: -50vw;
+    }
+
+    :host.project-left {
+        translate: -25vw;
+    }
+
+    :host.project-right {
+        translate: 25vw;
+    }
 }
