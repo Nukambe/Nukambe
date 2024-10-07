@@ -16,6 +16,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 a:hover {
@@ -33,4 +34,26 @@ img {
     33% { transform: rotate(-2deg);}
     66% { transform: rotate(2deg);}
     100% { transform: rotate(0deg); }
+}
+
+@media screen and (max-width: 1000px) {
+    :host {
+        flex-direction: column;
+    }
+
+    a {
+        width: 255px;
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    :host {
+        flex-direction: column;
+    }
+
+    a {
+        width: 200px;
+        height: 200px;
+    }
 }
