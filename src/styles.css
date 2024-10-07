@@ -19,6 +19,10 @@ body {
     background-image: url(https://toptal.com/designers/subtlepatterns/uploads/triangle-mosaic.png);
 }
 
+main {
+    height: 100%;
+}
+
 app-root {
     height: var(--content-height);
     width: var(--content-width);

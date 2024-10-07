@@ -1,49 +1,53 @@
 :host {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    display: grid;
-    grid-template-areas:
-        "a b"
-        "c c";
-}
-
-#certifications {
-    grid-area: a;
-    float: left;
-    border: 1px solid black;
-    padding: 16px;
-    min-width: 400px;
-    width: fit-content;
-    list-style-type: none;
+    padding: 2em;
     box-sizing: border-box;
-    border-radius: 10px;
-    height: fit-content;
-    margin: 16px 36px;
 }
 
-#certifications h2 {
+ul {
+    list-style: none;
     margin: 0;
     padding: 0;
 }
 
-#certifications ul {
-    padding: 0;
-    list-style: none;
+button {
+    padding: 1em 2em;
+    font-size: larger;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px gray;
+    transition: transform 0.05s linear;
+}
+
+button.active {
+    box-shadow: inset 1px 1px 2px gray;
+    transform: scale(0.98);
+}
+
+#tags {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 #skills {
-    grid-area: c;
-    padding: 16px 36px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap:  2em;
+    margin: auto;
 }
 
-#skills ul {
-    list-style: none;
-    padding: 0;
+
+#skills li {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    gap:  16px 32px;
-    width: 100%;
-    height: 100%;
+    transition: all 0.2s ease-out;
+}
+
+#skills li.hide {
+    transform: scale(0.5);
+    pointer-events: none;
 }

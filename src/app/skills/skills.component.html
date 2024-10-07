@@ -1,25 +1,14 @@
-<section id="certifications">
-    <h2>Certifications</h2>
-    <ul>
-        @for (certification of certifications; track $index) {
-            <li>
-                <app-certification [certification]="certification"></app-certification>
-            </li>
-        }
-    </ul>
-</section>
-
-<section>
-    Filters:
-</section>
-
-<section id="skills">
-    <h2>Skills</h2>
-    <ul>
-        @for (skill of skills; track $index) {
-            <li>
-                <app-skill [skill]="skill"></app-skill>
-            </li>
-        }
-    </ul>
-</section>
+<ul id="tags">
+    @for (tag of tags; track $index) {
+        <li>
+            <button (click)="filterSkills(tag)" [classList]="activeFilter === tag ? 'active' : ''">{{ tag }}</button>
+        </li>
+    }
+</ul>
+<ul id="skills">
+    @for (skill of skills; track $index) {
+    <li [classList]="skillIsHidden(skill.tags) ? 'hide' : ''">
+        <app-skill [skill]="skill"></app-skill>
+    </li>
+    }
+</ul>

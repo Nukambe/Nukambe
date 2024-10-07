@@ -1,15 +1,15 @@
 export enum tag {
-    frontend,
-    backend,
-    database,
-    devops,
-    mobile,
-    desktop,
-    cloud,
-    testing,
-    security,
-    OOP,
-    ORM,
+    frontend = "Frontend",
+    backend = "Backend",
+    database = "Database",
+    devops = "DevOps",
+    mobile = "Mobile",
+    desktop = "Desktop",
+    cloud = "Cloud",
+    testing = "Testing",
+    security = "Security",
+    OOP = "OOP",
+    ORM = "ORM",
 }
 
 export class Skill {
