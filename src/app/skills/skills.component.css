@@ -30,6 +30,7 @@ button.active {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    gap: 1em;
 }
 
 #skills {
@@ -51,4 +52,29 @@ button.active {
 #skills li.hide {
     transform: scale(0.5);
     pointer-events: none;
+}
+
+@media screen and (max-width: 900px) {
+    #skills {
+        gap: 0;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    #skills li {
+        transform: scale(0.8);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #tags {
+        display: none;
+    }
+
+    #skills {
+        gap: 0;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(6, 120px);
+    }
+    #skills li {
+        transform: scale(0.8);
+    }
 }
