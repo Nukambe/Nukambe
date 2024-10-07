@@ -45,6 +45,7 @@ button.active {
     justify-content: center;
     align-items: center;
     transition: all 0.2s ease-out;
+    height: fit-content;
 }
 
 #skills li.hide {

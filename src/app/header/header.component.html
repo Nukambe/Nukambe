@@ -6,8 +6,12 @@
         <li><a href="https://github.com/Nukambe" target="_blank"><img
                     src="https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg"
                     alt="GitHub Logo">GitHub</a></li>
-        <li><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"
-                alt="Youtube Logo"><a>Intro</a></li>
+        <li><button (click)="showIntroModal()"><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"
+                    alt="Youtube Logo">Intro</button></li>
     </ul>
     <a [routerLink]="'/'">Wesley Chappell</a>
 </header>
+@if (showIntro) {
+<app-intro (close)="closeIntroModal()"></app-intro>
+}

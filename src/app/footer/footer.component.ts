@@ -14,7 +14,7 @@ export class FooterComponent {
     { img: "/", link: "projects" },
     // { img: "/", link: "experience" },
     { img: "/", link: "skills" },
-    { img: "/", link: "testimonials" },
+    // { img: "/", link: "testimonials" },
     { img: "/", link: "contact" },
   ]
 }

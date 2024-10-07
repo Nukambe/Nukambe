@@ -7,14 +7,18 @@
     {{ project.type }} — {{ project.subType }}
 </div>
 <section class="project-info">
+    @if (project.liveUrl) {
     <a [href]="project.liveUrl" target="_blank">
         <img src="images/tap.png" alt="'Magic: The Gathering' tap symbol">:
         <p>Visit the live app.</p>
     </a>
+    }
+    @if (project.sourceUrl) {
     <a [href]="project.sourceUrl" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg" alt="GitHub logo">,
         <img src="images/tap.png" alt="'Magic: The Gathering' tap symbol">:
         <p>View the source code.</p>
     </a>
+    }
     {{ project.description }}
 </section>

@@ -25,4 +25,12 @@ div {
 
 button {
     z-index: 10;
+    background-color: unset;
+    border: none;
+    font-size: 7em;
+    line-height: 0;
+}
+
+button:hover {
+    transform: scale(1.1);
 }

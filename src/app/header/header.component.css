@@ -22,3 +22,12 @@ img {
     height: 24px;
     margin-right: 4px;
 }
+
+button {
+    background-color: unset;
+    border: none;
+    font-weight: var(--link-weight);
+    color: var(--font-color);
+    font-size: 1em;
+    cursor: pointer;
+}

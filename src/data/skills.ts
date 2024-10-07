@@ -90,22 +90,48 @@ nextjs.description = "Next.js";
 nextjs.image = "/images/nextjs.png";
 nextjs.tags = [tag.frontend, tag.backend];
 
-const sequalize = new Skill(15);
-sequalize.name = "Sequalize";
-sequalize.description = "Sequalize";
-sequalize.image = "/images/sequalize.png";
-sequalize.tags = [tag.ORM];
+// const sequalize = new Skill(15);
+// sequalize.name = "Sequalize";
+// sequalize.description = "Sequalize";
+// sequalize.image = "/images/sequalize.png";
+// sequalize.tags = [tag.ORM];
 
-const hibernate = new Skill(16);
-hibernate.name = "Hibernate";
-hibernate.description = "Hibernate";
-hibernate.image = "/images/hibernate.png";
-hibernate.tags = [tag.ORM];
+// const hibernate = new Skill(16);
+// hibernate.name = "Hibernate";
+// hibernate.description = "Hibernate";
+// hibernate.image = "/images/hibernate.png";
+// hibernate.tags = [tag.ORM];
 
-const room = new Skill(17);
-room.name = "Room";
-room.description = "Room";
-room.image = "/images/room.png";
-room.tags = [tag.ORM, tag.mobile];
+// const room = new Skill(17);
+// room.name = "Room";
+// room.description = "Room";
+// room.image = "/images/room.png";
+// room.tags = [tag.ORM, tag.mobile];
 
-export const skillsData: Skill[] = [java, javascript, typescript, angular, react, nodejs, nestjs, spring, postgresql, html, css, android, sqlite, tailwind, nextjs, sequalize, hibernate, room];
+const kafka = new Skill(18);
+kafka.name = "Kafka";
+kafka.description = "Kafka";
+kafka.image = " images/kafka.png";
+kafka.tags = [];
+
+export const skillsData: Skill[] = [
+    java,
+    javascript,
+    typescript,
+    angular,
+    react,
+    nodejs,
+    nestjs,
+    spring,
+    postgresql,
+    html,
+    css,
+    android,
+    sqlite,
+    tailwind,
+    nextjs,
+    // sequalize,
+    // hibernate,
+    // room,
+    kafka
+];

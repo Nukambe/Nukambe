@@ -3,7 +3,7 @@
         @for (link of navLinks; track $index) {
             <li>
                 <!-- <img [src]="link.img" [alt]="link.link"> -->
-                <a [routerLink]="link.link == 'home' ? '' : link.link" [routerLinkActive]="'active'">{{ link.link.toUpperCase() }}</a>
+                <a [routerLink]="link.link == 'home' ? '' : link.link" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">{{ link.link.toUpperCase() }}</a>
             </li>
         }
     </ul>
