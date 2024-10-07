@@ -36,7 +36,7 @@ button.active {
 #skills {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap:  2em;
+    gap: 2em;
     margin: auto;
 }
 
@@ -55,16 +55,30 @@ button.active {
 }
 
 @media screen and (max-width: 900px) {
+    button {
+        padding: 0.5em 1em;
+    }
+
+    #tags {
+        gap: 0.5em;
+    }
+
     #skills {
         gap: 0;
         grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(6, 150px);
     }
+
     #skills li {
         transform: scale(0.8);
     }
 }
 
 @media screen and (max-width: 600px) {
+    :host {
+        padding: 1em;
+    }
+
     #tags {
         display: none;
     }
@@ -72,9 +86,24 @@ button.active {
     #skills {
         gap: 0;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(6, 120px);
+        grid-template-rows: repeat(6, 100px);
+        margin: 0;
     }
+
     #skills li {
         transform: scale(0.8);
+    }
+}
+
+@media screen and (max-width: 410px) {
+    #skills {
+        gap: 0;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(8, 80px);
+        margin: 0;
+    }
+
+    #skills li {
+        transform: scale(0.75);
     }
 }
