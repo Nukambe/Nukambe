@@ -9,6 +9,7 @@ header {
     align-items: center;
     width: var(--content-width);
     margin-left: var(--page-border);
+    margin-top: 1em;
 }
 
 ul {
@@ -30,4 +31,14 @@ button {
     color: var(--font-color);
     font-size: 1em;
     cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+    li a, button {
+        font-size: 0;
+    }
+
+    img {
+        height: 28px;
+    }
 }
