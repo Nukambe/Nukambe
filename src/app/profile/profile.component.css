@@ -1,3 +1,10 @@
+:host {
+    padding: 1em;
+    display: block;
+    height: 100%;
+    box-sizing: border-box;
+}
+
 #parallax-wrapper {
     position: relative;
     display: flex;
@@ -10,7 +17,7 @@
     padding: 48px 48px 0px 48px;
     background-image: url("/images/avatar-bg.jpg");
     box-sizing: border-box;
-    margin: 2em auto 0;
+    margin: auto;
     box-shadow: 2px 2px 2px black;
 }
 
@@ -19,7 +26,8 @@
     /* transition: all 0.2s ease-out; */
 }
 
-h1, h2 {
+h1,
+h2 {
     text-align: center;
     margin: 0;
 }
@@ -38,4 +46,62 @@ p {
     text-align: justify;
     font-size: 16pt;
     font-weight: 450;
+}
+
+@media screen and (max-width: 900px) {
+    :host {
+        padding: 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #parallax-wrapper {
+        height: 200px;
+        width: 200px;
+        margin: unset;
+    }
+
+    #parallax-fg {
+        height: 250px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        max-width: 300px;
+        font-size: 14pt;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    :host {
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #parallax-wrapper {
+        height: 100px;
+        width: 100px;
+        margin: unset;
+    }
+
+    #parallax-fg {
+        height: 150px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        max-width: 300px;
+        font-size: 12pt;
+    }
 }

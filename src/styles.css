@@ -37,3 +37,7 @@ a {
     color: var(--font-color);
     font-weight: var(--link-weight);
 }
+
+ul {
+    margin: 0;
+}
