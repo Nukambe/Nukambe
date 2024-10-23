@@ -2,7 +2,7 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=nukambe&label=Profile%20views&color=0e75b6&style=flat" alt="nukambe" /> </p>
 
-- 🔭 I’m currently working on [Gym Nav](https://github.com/Nukambe/workout)
+- 🔭 I’m currently working on the [Boot.dev](https://www.boot.dev/) backend engineering course.
 
 - 🌱 I’m a recent grad with a Bachelors in Software Engineering and completed a Software Engineering bootcamp.
 
