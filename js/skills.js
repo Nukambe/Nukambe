@@ -17,11 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const icon = document.createElement("img");
     icon.id = skill + "-icon";
     icon.classList.add("skill-icon");
-    icon.src = `images/skills/${skill}.png`;
-
-    // const overlay = document.createElement("img");
-    // overlay.src = "images/skills/triangle-mosaic.webp";
-    // overlay.classList.add("overlay");
+    icon.src = `images/skills/${skill}.${skill === "Java" ? "webp" : "png"}`;
 
     skillElement.onmouseenter = () => {
       label.classList.add("hovered");

@@ -59,8 +59,8 @@ window.addEventListener("DOMContentLoaded", function() {
     </style>
     <h4>${project.title}</h4>
     <p>${project.description}</p>
-    <a href="${project.url}" target="_blank" rel="noopener noreferrer">View the live project.</a>
-    <a href="${project.repo}" target="_blank" rel="noopener noreferrer">View the source code.</a>
+    ${project.url ? `<a href="${project.url}" target="_blank" rel="noopener noreferrer">View the live project.</a>` : ""}
+    ${project.repo ? `<a href="${project.repo}" target="_blank" rel="noopener noreferrer">View the source code.</a>` : ""}
     `;
 
     projectsList.appendChild(article);

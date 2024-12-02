@@ -75,16 +75,15 @@ article:hover h4, article:hover p {
 
 article a {
   display: inline-block; /* Treat links as buttons */
-  font-size: 0.9rem; /* Font size for links */
-  color: #007BFF; /* Blue color for links */
+  font-size: 14pt; /* Font size for links */
+  color: #999;
   text-decoration: none; /* Remove underline */
   padding: 8px 12px; /* Add padding to links */
   border-radius: 5px; /* Rounded corners for links */
-  border: 1px solid #007BFF; /* Border for buttons */
   transition: background-color 0.2s ease, color 0.2s ease; /* Smooth hover effect */
 }
 
 article a:hover {
-  background-color: #007BFF; /* Blue background on hover */
-  color: #ffffff; /* White text on hover */
+  background-color: #99AAb5; /* Blue background on hover */
+  color: black; /* White text on hover */
 }
