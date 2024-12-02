@@ -106,7 +106,7 @@ header img {
     font-size: 24pt;
     padding: 16px 16px;
     border-radius: 64px;
-    margin-right: 8px;
+    margin: 16px;
   }
   header nav ul li {
     display: none;
