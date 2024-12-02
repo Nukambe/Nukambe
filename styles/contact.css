@@ -31,6 +31,7 @@
   justify-items: center;
   align-items: center;
   text-align: center;
+  box-sizing: border-box;
 }
 
 #contact h4, #contact p {
@@ -53,7 +54,24 @@
 
 @keyframes shake {
   0% { transform: rotate(0deg); }
-  33% { transform: rotate(-2deg);}
-  66% { transform: rotate(2deg);}
+  33% { transform: rotate(-1deg);}
+  66% { transform: rotate(1deg);}
   100% { transform: rotate(0deg); }
+}
+
+@media screen and (max-width: 950px) {
+  #contact ul {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #contact ul {
+    padding: 0 8px;
+  }
+  #contact a, #contact li {
+    width: 100%;
+  }
 }
