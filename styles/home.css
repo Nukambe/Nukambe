@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+#home {
+  height: 1000px;
+  background: linear-gradient(to bottom,  white 0%, #99AAb5 80%);
+  padding: 0;
+}
+
+#home h1 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 16rem;
+  margin: 0;
+  width: 1080px;
+  color: black;
+}
+
+#home h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 4rem;
+  margin: 0 0 0 8px;
+  color: black;
+}
