@@ -84,6 +84,7 @@
   #home {
     height: 100vh;
     justify-content: flex-end;
+    overflow-x: hidden;
   }
 
   #home h1 span {
@@ -98,7 +99,8 @@
   }
 
   #home img {
-    right: -100px;
+    position: relative;
+    transform: translateX(20%) translateY(10%);
     height: 100vh;
   }
 }

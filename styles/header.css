@@ -8,8 +8,8 @@ header {
   gap: 16px;
   list-style: none;
   position: fixed;
-  right: 16px;
-  top: 0;
+  right: 32px;
+  top: 8px;
   z-index: 200;
 }
 
@@ -123,7 +123,7 @@ header img {
     font-size: 24pt;
     padding: 16px 16px;
     border-radius: 64px;
-    margin: 16px;
+    margin: 32px;
   }
   header nav ul li {
     display: none;
