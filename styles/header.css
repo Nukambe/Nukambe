@@ -52,11 +52,16 @@ header nav ul {
   gap: 2rem;
   padding: 12px 32px;
   margin: auto;
-  background-color: #36393F;
+  background-color: rgba(54, 57, 63, 0.8);
   border-radius: 10rem;
   box-shadow: 1px 1px 1px black;
   width: fit-content;
   box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+}
+
+header nav ul:hover {
+  background-color: rgba(54, 57, 63, 1);
 }
 
 header nav button {
@@ -75,14 +80,26 @@ header nav button:hover {
 }
 
 header nav li.mobile button {
-  background-color: white;
+  background-color: #e0e0e0; /* Slightly darker background for a recessed look */
+  box-shadow: inset 2px 2px 6px rgba(255, 255, 255, 0.6), /* Light highlight on top-left */
+  inset -2px -2px 6px rgba(0, 0, 0, 0.4); /* Dark shadow on bottom-right */
+  border: 1px solid #b0b0b0; /* Subtle border for depth */
   height: 48px;
   width: 48px;
-  border-radius: 48px;
+  border-radius: 48px; /* Circular shape */
   color: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1rem; /* Adjust font size as needed */
+  cursor: pointer;
+  transition: all 0.2s ease; /* Smooth interaction */
+}
+
+header nav li.mobile button:hover {
+  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.6), /* Reverse light */
+  inset 2px 2px 6px rgba(0, 0, 0, 0.4); /* Reverse shadow */
+  background-color: #d0d0d0; /* Slightly darker background on press */
 }
 
 header nav li.mobile button:hover img {

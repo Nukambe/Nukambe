@@ -22,7 +22,6 @@ article {
   transition: all 0.2s ease-in-out;
   display: flex;
   flex-direction: column;
-  height: 250px;
   box-sizing: border-box;
 }
 

@@ -35,7 +35,6 @@
 
 #skills .skill-label {
   color: white;
-  font-size: 24pt;
   position: absolute;
   height: 100px;
   line-height: 100px;
@@ -61,11 +60,11 @@
 @keyframes bob {
   0%,
   100% {
-    transform: translateY(10px);
+    transform: translateY(0);
   }
 
   50% {
-    transform: translateY(-10px);
+    transform: translateY(10px);
   }
 }
 

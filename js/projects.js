@@ -18,14 +18,14 @@ window.addEventListener("DOMContentLoaded", function() {
     {
       title: "MealNav",
       description: "MealNav is a meal planner that allows users to track meals. Users can add recipes to their calendar and track their nutrition.",
-      url: "https://meal.chappelly.com/",
+      url: "",
       repo: "https://github.com/Nukambe/mealnav",
       thumbnail: "images/thumbnails/mealnav-ss.png",
     },
     {
       title: "Forms",
       description: "Forms is a form builder that allows users to create and share forms. Users can add fields to forms and track responses over time.",
-      url: "https://forms.chappelly.com/",
+      url: "",
       repo: "https://github.com/Nukambe/marci-forms",
       thumbnail: "images/thumbnails/forms-ss.png",
     },
