@@ -2,13 +2,13 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=nukambe&label=Profile%20views&color=0e75b6&style=flat" alt="nukambe" /> </p>
 
-- 🔭 I’m currently working on the [Boot.dev](https://www.boot.dev/) backend engineering course.
+- 👨‍💻 I’m passionate about building innovative solutions and exploring new technologies.
 
-- 🌱 I’m a recent grad with a Bachelors in Software Engineering and completed a Software Engineering bootcamp.
+- 🚀 My interests include home automation and IoT devices, lifestyle apps, robotics, and game development.
 
-- I have 4+ years of professional IT support experience and am looking to contribute to organizations in a more hands-on role.
+- 🌟 I enjoy working on projects that improve daily life through creative and practical applications of software and hardware.
 
-- 👨‍💻 All of my projects are available at [www.wesleychappell.com](https://www.wesleychappell.com/)
+- 💼 Explore my portfolio and projects at www.wesleychappell.com
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
