@@ -1,0 +1,133 @@
+#projects {
+  background: linear-gradient(to bottom, #99AAb5, #99AAb5);
+}
+
+#projects-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0;
+  margin: auto;
+  width: fit-content;
+  gap: 12px;
+}
+
+article {
+  position: relative; /* Required for pseudo-element positioning */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Prevent pseudo-element from overflowing */
+  color: white; /* Text color for contrast */
+  padding: 20px;
+  margin: 0;
+  width: 400px;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+article::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay; /* Blend the dark color with the image */
+  filter: blur(2px); /* Apply the blur effect */
+  z-index: 1; /* Place it below the content */
+  transition: all 0.2s ease-in-out;
+}
+
+article:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+article:hover::before {
+  filter: blur(0);
+}
+
+article h4,
+article p,
+article a {
+  position: relative;
+  z-index: 2; /* Place content above the overlay */
+  margin: 0;
+}
+
+article h4 {
+  font-size: 28pt; /* Title font size */
+  color: #999; /* Gray text color */
+}
+
+article p {
+  font-size: 14pt; /* Body text font size */
+  color: #999; /* Gray text color */
+  line-height: 1.5; /* Improve readability */
+  margin-bottom: auto;
+}
+
+article:hover h4, article:hover p {
+  color: white;
+}
+
+article a {
+  display: inline-block; /* Treat links as buttons */
+  font-size: 14pt; /* Font size for links */
+  color: #999;
+  text-decoration: none; /* Remove underline */
+  padding: 8px 12px; /* Add padding to links */
+  border-radius: 5px; /* Rounded corners for links */
+  transition: background-color 0.2s ease, color 0.2s ease; /* Smooth hover effect */
+}
+
+article a:hover {
+  background-color: #99AAb5; /* Blue background on hover */
+  color: black; /* White text on hover */
+}
+
+@media screen and (max-width: 1380px) {
+  article {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  #projects-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  article {
+    width: 360px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  #projects-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0 12px;
+    gap: 4px;
+  }
+
+  article {
+    width: 100%;
+    height: auto;
+    min-height: 250px;
+  }
+
+  article:hover {
+    transform: translateY(0); /* Slight lift on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+
+  article h4, article p {
+    color: white;
+  }
+
+  article a {
+    text-decoration: underline;
+  }
+}

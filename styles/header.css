@@ -1,0 +1,134 @@
+header {
+  width: 100%;
+}
+
+#socials {
+  display: flex;
+  justify-content: right;
+  gap: 16px;
+  list-style: none;
+  position: fixed;
+  right: 16px;
+  top: 0;
+  z-index: 200;
+}
+
+#socials img {
+  height: 32px;
+  width: 32px;
+  background-color: white;
+}
+
+#socials #youtube-logo {
+  width: 38px;
+  border-radius: 8px;
+  border: 1px solid white;
+}
+
+#socials #github-logo {
+  border-radius: 16px;
+  border: 1px solid white;
+}
+
+#socials #linkedin-logo {
+  border-radius: 4px;
+  border: 1px solid white;
+}
+
+header nav {
+  position: fixed;
+  bottom: 8px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 100;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 2rem;
+  padding: 12px 32px;
+  margin: auto;
+  background-color: rgba(54, 57, 63, 0.8);
+  border-radius: 10rem;
+  box-shadow: 1px 1px 1px black;
+  width: fit-content;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+}
+
+header nav ul:hover {
+  background-color: rgba(54, 57, 63, 1);
+}
+
+header nav button {
+  border: none;
+  background-color: unset;
+  font-size: 16pt;
+  cursor: pointer;
+  color: #999;
+  border-bottom: 4px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+header nav button:hover {
+  border-bottom: 4px solid white;
+  color: white;
+}
+
+header nav li.mobile button {
+  background-color: #e0e0e0; /* Slightly darker background for a recessed look */
+  box-shadow: inset 2px 2px 6px rgba(255, 255, 255, 0.6), /* Light highlight on top-left */
+  inset -2px -2px 6px rgba(0, 0, 0, 0.4); /* Dark shadow on bottom-right */
+  border: 1px solid #b0b0b0; /* Subtle border for depth */
+  height: 48px;
+  width: 48px;
+  border-radius: 48px; /* Circular shape */
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem; /* Adjust font size as needed */
+  cursor: pointer;
+  transition: all 0.2s ease; /* Smooth interaction */
+}
+
+header nav li.mobile button:hover {
+  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.6), /* Reverse light */
+  inset 2px 2px 6px rgba(0, 0, 0, 0.4); /* Reverse shadow */
+  background-color: #d0d0d0; /* Slightly darker background on press */
+}
+
+header nav li.mobile button:hover img {
+  transform: scale(1.2);
+}
+
+header img {
+  transition: all 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 500px) {
+  header nav {
+    display: flex;
+    justify-content: right;
+
+  }
+  header nav ul {
+    width: 16px;
+    height: 16px;
+    font-weight: bold;
+    font-size: 24pt;
+    padding: 16px 16px;
+    border-radius: 64px;
+    margin: 16px;
+  }
+  header nav ul li {
+    display: none;
+  }
+  header nav ul li.mobile {
+    display: block;
+   }
+}

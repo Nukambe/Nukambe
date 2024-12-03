@@ -1,0 +1,30 @@
+* {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  color: white;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  /*background-color: #777;*/
+}
+
+section {
+  padding: 64px 0;
+}
+
+h3 {
+  text-align: center;
+  font-size: 26pt;
+  margin-top: 0;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
