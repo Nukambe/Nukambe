@@ -1,44 +1,55 @@
-window.addEventListener('DOMContentLoaded', () => {
-  const skillsSection = document.getElementById('skills-list');
+/**
+ * Renders the skills cloud. Ordered by discipline so related tools drift
+ * near each other, but presented as one cluster rather than a rigid grid.
+ */
+(() => {
+  const cloud = document.getElementById('skills-list');
+  if (!cloud) return;
 
-  [
-    "Angular", "React", "Nextjs", "Svelte", "Tailwind", "CSS", "HTML", // Frontend
-    "Nodejs", "NestJS", "Spring Boot",                                // Backend
-    "JavaScript", "TypeScript", "Python", "Java", "C", "Go",          // Languages
-    "Unreal Engine", "Pygame",                                        // Game Development
-    "PostgreSQL", "SQLite", "SQL",                                    // Databases
-    "AWS", "Docker", "CICD",                                          // Cloud and Infrastructure
-    "Kafka", "RabbitMQ",                                              // Messaging
-    "Git", "Shells"                                                   // Miscellaneous
-  ].forEach(skill => {
-    const skillElement = document.createElement("li");
-    skillElement.id = skill;
-    skillElement.classList.add("skill");
-    skillElement.style.animationDelay = Math.random() * 5 + 's';
+  const skills = [
+    'Angular', 'React', 'Nextjs', 'Svelte', 'Tailwind', 'HTML', 'CSS',
+    'Nodejs', 'NestJS', 'Spring Boot',
+    'JavaScript', 'TypeScript', 'Python', 'Java', 'C', 'Go',
+    'PostgreSQL', 'SQLite', 'SQL',
+    'AWS', 'Docker', 'CICD', 'Kafka', 'RabbitMQ',
+    'Unreal Engine', 'Pygame',
+    'Git', 'Shells',
+  ];
 
-    const label = document.createElement("label");
-    label.id = skill + "-label";
-    label.classList.add("skill-label");
-    label.innerHTML = skill;
-    // label.style.fontSize = `${100 / skill.length}pt`;
-    // label.style.fontSize = `${Math.max(10, 100 / Math.sqrt(skill.length))}pt`;
-    label.style.fontSize = `${Math.max(10, 50 / Math.log2(skill.length + 1))}pt`;
+  // Display names that differ from their icon filename.
+  const labels = { Nextjs: 'Next.js', Nodejs: 'Node.js', CICD: 'CI/CD' };
 
-    const icon = document.createElement("img");
-    icon.id = skill + "-icon";
-    icon.classList.add("skill-icon");
-    icon.src = `images/skills/${skill}.${skill === "Java" ? "webp" : "png"}`;
+  // Everything else ships as a .png.
+  const extensions = { Java: 'webp' };
 
-    skillElement.onmouseenter = () => {
-      label.classList.add("hovered");
-    }
-    skillElement.onmouseleave = () => {
-      label.classList.remove("hovered");
-    }
+  /* Deterministic variation — random values would reshuffle the cloud on every
+     load and make the drift impossible to tune. Coprime cycle lengths keep the
+     offsets and timings from lining up into a visible pattern. */
+  const nudges = [0, 16, -10, 22, -6, 12, -18, 6];
+  const durations = [6, 7.4, 6.6, 8, 7];
 
-    skillElement.appendChild(label);
-    skillElement.appendChild(icon);
-    // skillElement.appendChild(overlay);
-    skillsSection.append(skillElement);
-  });
-});
+  const markup = skills
+    .map((skill, i) => {
+      const label = labels[skill] || skill;
+      const src = `images/skills/${encodeURIComponent(skill)}.${extensions[skill] || 'png'}`;
+      const style = [
+        `--nudge:${nudges[i % nudges.length]}px`,
+        `--dur:${durations[i % durations.length]}s`,
+        `--delay:-${(i * 0.73).toFixed(2)}s`,
+      ].join(';');
+
+      return `
+      <li class="orb" style="${style}">
+        <span class="orb__float">
+          <span class="orb__disc">
+            <img class="orb__icon" src="${src}" alt="" loading="lazy" decoding="async">
+          </span>
+        </span>
+        <span class="orb__label">${label}</span>
+      </li>`;
+    })
+    .join('');
+
+  cloud.insertAdjacentHTML('beforeend', markup);
+  document.dispatchEvent(new CustomEvent('content:rendered'));
+})();

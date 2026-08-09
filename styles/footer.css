@@ -1,4 +1,30 @@
-footer {
-  height: 10vh;
-  background: #23272A;
+.site-footer {
+  padding-block: 2rem;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--line);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-footer__copy {
+  color: var(--text-dim);
+  font-size: var(--step--1);
+}
+
+@media screen and (max-width: 700px) {
+  .site-footer {
+    /* Clear the floating mobile nav pill. */
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  }
+
+  .site-footer__inner {
+    justify-content: center;
+    text-align: center;
+  }
 }
