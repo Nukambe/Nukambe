@@ -1,71 +1,146 @@
-.skills {
-  display: grid;
-  gap: clamp(1.75rem, 4vw, 2.75rem);
-}
-
-.skills__group-title {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  font-family: var(--font-body);
-  font-size: var(--step--1);
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-}
-
-.skills__group-title::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--line);
-}
-
-.skills__list {
+/* A loose cloud of tool tokens that drift gently. Three nested elements keep
+   the transforms from fighting each other: the item holds the static scatter
+   offset, the float wrapper owns the animation, the disc owns hover. */
+.cloud {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.skill {
-  display: inline-flex;
+  justify-content: center;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.5rem 1rem 0.5rem 0.5rem;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-pill);
-  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease),
-    background-color 0.2s var(--ease);
+  gap: clamp(0.85rem, 2.2vw, 1.75rem);
+  /* Room for the scatter offsets and hover tooltips to breathe. */
+  padding-block: clamp(1.75rem, 4vw, 2.75rem);
+
+  --disc: clamp(60px, 8.5vw, 82px);
+  --scatter: 1;
 }
 
-.skill:hover {
-  transform: translateY(-3px);
-  border-color: var(--line-hi);
-  background: var(--surface-hi);
+.orb {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(calc(var(--nudge, 0px) * var(--scatter)));
 }
 
-.skill__icon {
+.orb:hover {
+  z-index: 5;
+}
+
+.orb__float {
+  animation: drift var(--dur, 6s) var(--delay, 0s) ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+.orb:hover .orb__float {
+  animation-play-state: paused;
+}
+
+/* Disc ---------------------------------------------------
+   The light face is doing real work: several logos are solid black on a
+   transparent field and would disappear against the page background. */
+.orb__disc {
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
-  flex: none;
-  border-radius: var(--radius-pill);
-  background: #fff;
+  width: var(--disc);
+  height: var(--disc);
+  border-radius: 50%;
+  background: linear-gradient(160deg, #ffffff 0%, #e9edf3 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 16px 30px -16px rgba(0, 0, 0, 0.95);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 
-.skill__icon img {
-  width: 20px;
-  height: 20px;
+.orb:hover .orb__disc {
+  transform: scale(1.09);
+  box-shadow: 0 0 0 1px var(--accent), 0 0 0 6px var(--accent-soft),
+    0 20px 34px -14px rgba(0, 0, 0, 0.95);
+}
+
+.orb__icon {
+  width: 52%;
+  height: 52%;
   object-fit: contain;
+  /* Softens the few logos that ship as opaque squares. */
+  border-radius: 6px;
 }
 
-.skill__name {
-  font-size: var(--step--1);
+/* Label --------------------------------------------------
+   A tooltip on pointer devices; always visible where hover doesn't exist. */
+.orb__label {
+  position: absolute;
+  bottom: calc(100% + 0.6rem);
+  left: 50%;
+  padding: 0.3rem 0.7rem;
+  background: var(--surface-hi);
+  border: 1px solid var(--line-hi);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, 5px);
+  pointer-events: none;
+  transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
+}
+
+.orb:hover .orb__label {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media screen and (max-width: 700px) {
+  .cloud {
+    --scatter: 0.5;
+  }
+}
+
+@media (hover: none) {
+  /* Labels are in the flow here, so drop the scatter — offsets are applied
+     with transforms and would let a nudged orb sit on its neighbour's label.
+     The discs still drift; only the static offset goes away. */
+  .cloud {
+    --scatter: 0;
+    align-items: flex-start;
+    gap: clamp(1.25rem, 4vw, 1.75rem) 0;
+  }
+
+  .orb {
+    width: clamp(72px, 22vw, 104px);
+  }
+
+  .orb__label {
+    position: static;
+    max-width: 100%;
+    margin-top: 0.55rem;
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    color: var(--text-muted);
+    text-align: center;
+    white-space: normal;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb {
+    transform: none;
+  }
+
+  .orb__float {
+    animation: none;
+  }
 }

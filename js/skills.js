@@ -1,56 +1,55 @@
 /**
- * Renders the skills section, grouped by discipline.
+ * Renders the skills cloud. Ordered by discipline so related tools drift
+ * near each other, but presented as one cluster rather than a rigid grid.
  */
 (() => {
-  const skillsSection = document.getElementById('skills-list');
-  if (!skillsSection) return;
+  const cloud = document.getElementById('skills-list');
+  if (!cloud) return;
 
-  const groups = [
-    { title: 'Frontend', skills: ['Angular', 'React', 'Nextjs', 'Svelte', 'Tailwind', 'HTML', 'CSS'] },
-    { title: 'Backend', skills: ['Nodejs', 'NestJS', 'Spring Boot'] },
-    { title: 'Languages', skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C', 'Go'] },
-    { title: 'Data', skills: ['PostgreSQL', 'SQLite', 'SQL'] },
-    { title: 'Cloud & infrastructure', skills: ['AWS', 'Docker', 'CICD', 'Kafka', 'RabbitMQ'] },
-    { title: 'Game development', skills: ['Unreal Engine', 'Pygame'] },
-    { title: 'Tooling', skills: ['Git', 'Shells'] },
+  const skills = [
+    'Angular', 'React', 'Nextjs', 'Svelte', 'Tailwind', 'HTML', 'CSS',
+    'Nodejs', 'NestJS', 'Spring Boot',
+    'JavaScript', 'TypeScript', 'Python', 'Java', 'C', 'Go',
+    'PostgreSQL', 'SQLite', 'SQL',
+    'AWS', 'Docker', 'CICD', 'Kafka', 'RabbitMQ',
+    'Unreal Engine', 'Pygame',
+    'Git', 'Shells',
   ];
 
   // Display names that differ from their icon filename.
-  const labels = {
-    Nextjs: 'Next.js',
-    Nodejs: 'Node.js',
-    CICD: 'CI/CD',
-  };
+  const labels = { Nextjs: 'Next.js', Nodejs: 'Node.js', CICD: 'CI/CD' };
 
   // Everything else ships as a .png.
   const extensions = { Java: 'webp' };
 
-  const iconSrc = (skill) =>
-    `images/skills/${encodeURIComponent(skill)}.${extensions[skill] || 'png'}`;
+  /* Deterministic variation — random values would reshuffle the cloud on every
+     load and make the drift impossible to tune. Coprime cycle lengths keep the
+     offsets and timings from lining up into a visible pattern. */
+  const nudges = [0, 16, -10, 22, -6, 12, -18, 6];
+  const durations = [6, 7.4, 6.6, 8, 7];
 
-  const markup = groups
-    .map(
-      (group) => `
-      <div class="skills__group reveal">
-        <h3 class="skills__group-title">${group.title}</h3>
-        <ul class="skills__list">
-          ${group.skills
-            .map((skill) => {
-              const label = labels[skill] || skill;
-              return `
-            <li class="skill">
-              <span class="skill__icon">
-                <img src="${iconSrc(skill)}" alt="" loading="lazy" decoding="async" width="20" height="20">
-              </span>
-              <span class="skill__name">${label}</span>
-            </li>`;
-            })
-            .join('')}
-        </ul>
-      </div>`
-    )
+  const markup = skills
+    .map((skill, i) => {
+      const label = labels[skill] || skill;
+      const src = `images/skills/${encodeURIComponent(skill)}.${extensions[skill] || 'png'}`;
+      const style = [
+        `--nudge:${nudges[i % nudges.length]}px`,
+        `--dur:${durations[i % durations.length]}s`,
+        `--delay:-${(i * 0.73).toFixed(2)}s`,
+      ].join(';');
+
+      return `
+      <li class="orb" style="${style}">
+        <span class="orb__float">
+          <span class="orb__disc">
+            <img class="orb__icon" src="${src}" alt="" loading="lazy" decoding="async">
+          </span>
+        </span>
+        <span class="orb__label">${label}</span>
+      </li>`;
+    })
     .join('');
 
-  skillsSection.insertAdjacentHTML('beforeend', markup);
+  cloud.insertAdjacentHTML('beforeend', markup);
   document.dispatchEvent(new CustomEvent('content:rendered'));
 })();
