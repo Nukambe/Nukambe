@@ -1,44 +1,56 @@
-window.addEventListener('DOMContentLoaded', () => {
+/**
+ * Renders the skills section, grouped by discipline.
+ */
+(() => {
   const skillsSection = document.getElementById('skills-list');
+  if (!skillsSection) return;
 
-  [
-    "Angular", "React", "Nextjs", "Svelte", "Tailwind", "CSS", "HTML", // Frontend
-    "Nodejs", "NestJS", "Spring Boot",                                // Backend
-    "JavaScript", "TypeScript", "Python", "Java", "C", "Go",          // Languages
-    "Unreal Engine", "Pygame",                                        // Game Development
-    "PostgreSQL", "SQLite", "SQL",                                    // Databases
-    "AWS", "Docker", "CICD",                                          // Cloud and Infrastructure
-    "Kafka", "RabbitMQ",                                              // Messaging
-    "Git", "Shells"                                                   // Miscellaneous
-  ].forEach(skill => {
-    const skillElement = document.createElement("li");
-    skillElement.id = skill;
-    skillElement.classList.add("skill");
-    skillElement.style.animationDelay = Math.random() * 5 + 's';
+  const groups = [
+    { title: 'Frontend', skills: ['Angular', 'React', 'Nextjs', 'Svelte', 'Tailwind', 'HTML', 'CSS'] },
+    { title: 'Backend', skills: ['Nodejs', 'NestJS', 'Spring Boot'] },
+    { title: 'Languages', skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C', 'Go'] },
+    { title: 'Data', skills: ['PostgreSQL', 'SQLite', 'SQL'] },
+    { title: 'Cloud & infrastructure', skills: ['AWS', 'Docker', 'CICD', 'Kafka', 'RabbitMQ'] },
+    { title: 'Game development', skills: ['Unreal Engine', 'Pygame'] },
+    { title: 'Tooling', skills: ['Git', 'Shells'] },
+  ];
 
-    const label = document.createElement("label");
-    label.id = skill + "-label";
-    label.classList.add("skill-label");
-    label.innerHTML = skill;
-    // label.style.fontSize = `${100 / skill.length}pt`;
-    // label.style.fontSize = `${Math.max(10, 100 / Math.sqrt(skill.length))}pt`;
-    label.style.fontSize = `${Math.max(10, 50 / Math.log2(skill.length + 1))}pt`;
+  // Display names that differ from their icon filename.
+  const labels = {
+    Nextjs: 'Next.js',
+    Nodejs: 'Node.js',
+    CICD: 'CI/CD',
+  };
 
-    const icon = document.createElement("img");
-    icon.id = skill + "-icon";
-    icon.classList.add("skill-icon");
-    icon.src = `images/skills/${skill}.${skill === "Java" ? "webp" : "png"}`;
+  // Everything else ships as a .png.
+  const extensions = { Java: 'webp' };
 
-    skillElement.onmouseenter = () => {
-      label.classList.add("hovered");
-    }
-    skillElement.onmouseleave = () => {
-      label.classList.remove("hovered");
-    }
+  const iconSrc = (skill) =>
+    `images/skills/${encodeURIComponent(skill)}.${extensions[skill] || 'png'}`;
 
-    skillElement.appendChild(label);
-    skillElement.appendChild(icon);
-    // skillElement.appendChild(overlay);
-    skillsSection.append(skillElement);
-  });
-});
+  const markup = groups
+    .map(
+      (group) => `
+      <div class="skills__group reveal">
+        <h3 class="skills__group-title">${group.title}</h3>
+        <ul class="skills__list">
+          ${group.skills
+            .map((skill) => {
+              const label = labels[skill] || skill;
+              return `
+            <li class="skill">
+              <span class="skill__icon">
+                <img src="${iconSrc(skill)}" alt="" loading="lazy" decoding="async" width="20" height="20">
+              </span>
+              <span class="skill__name">${label}</span>
+            </li>`;
+            })
+            .join('')}
+        </ul>
+      </div>`
+    )
+    .join('');
+
+  skillsSection.insertAdjacentHTML('beforeend', markup);
+  document.dispatchEvent(new CustomEvent('content:rendered'));
+})();

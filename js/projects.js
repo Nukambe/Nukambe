@@ -1,68 +1,102 @@
-window.addEventListener("DOMContentLoaded", function() {
-  const projectsList = document.getElementById("projects-list");
+/**
+ * Renders the projects grid. Runs at `defer` time, so the list element
+ * already exists and the reveal observer in main.js picks the cards up.
+ */
+(() => {
+  const projectsList = document.getElementById('projects-list');
+  if (!projectsList) return;
+
   const projects = [
     {
-      title: "GymNav",
-      description: "GymNav is a web app that allows users to create and track workouts. Users can add exercises to workouts and track their progress over time.",
-      url: "https://gym.chappelly.com/",
-      repo: "https://github.com/Nukambe/workout",
-      thumbnail: "images/thumbnails/gymnav-ss.png",
+      title: 'GymNav',
+      description:
+        'A web app for creating and tracking workouts. Users add exercises to workouts and follow their progress over time.',
+      url: 'https://gym.chappelly.com/',
+      repo: 'https://github.com/Nukambe/workout',
+      thumbnail: 'images/thumbnails/gymnav-ss.png',
     },
     {
-      title: "Vacation Planner",
-      description: "Vacation Planner is an Android application that allows users to schedule vacations. Users can add excursions to their trips and set alerts.",
-      url: "",
-      repo: "",
-      thumbnail: "images/thumbnails/vacation-planner-ss.png",
+      title: 'Vacation Planner',
+      description:
+        'An Android application for scheduling vacations. Users add excursions to their trips and set alerts so nothing gets missed.',
+      url: '',
+      repo: '',
+      thumbnail: 'images/thumbnails/vacation-planner-ss.png',
     },
     {
-      title: "MealNav",
-      description: "MealNav is a meal planner that allows users to track meals. Users can add recipes to their calendar and track their nutrition.",
-      url: "",
-      repo: "https://github.com/Nukambe/mealnav",
-      thumbnail: "images/thumbnails/mealnav-ss.png",
+      title: 'MealNav',
+      description:
+        'A meal planner for tracking what you eat. Users add recipes to their calendar and keep an eye on their nutrition.',
+      url: '',
+      repo: 'https://github.com/Nukambe/mealnav',
+      thumbnail: 'images/thumbnails/mealnav-ss.png',
     },
     {
-      title: "Forms",
-      description: "Forms is a form builder that allows users to create and share forms. Users can add fields to forms and track responses over time.",
-      url: "",
-      repo: "https://github.com/Nukambe/marci-forms",
-      thumbnail: "images/thumbnails/forms-ss.png",
+      title: 'Forms',
+      description:
+        'A form builder for creating and sharing forms. Users add fields to a form and track the responses that come back.',
+      url: '',
+      repo: 'https://github.com/Nukambe/marci-forms',
+      thumbnail: 'images/thumbnails/forms-ss.png',
     },
     {
-      title: "moriahyoung",
-      description: "This is a website for actress, Moriah Young. It is a single page site built with React and a showcase of her audio and video reels.",
-      url: "https://www.moriahyoung.com/",
-      repo: "https://github.com/Nukambe/moriahyoung-react-app",
-      thumbnail: "images/thumbnails/moriah-ss.png",
+      title: 'Moriah Young',
+      description:
+        'A single page site for actress Moriah Young, built with React to showcase her audio and video reels.',
+      url: 'https://www.moriahyoung.com/',
+      repo: 'https://github.com/Nukambe/moriahyoung-react-app',
+      thumbnail: 'images/thumbnails/moriah-ss.png',
     },
     {
-      title: "Volleyball",
-      description: "This is a website for a high school volleyball player. It is a single page website built with Next.js.",
-      url: "",
-      repo: "https://github.com/Nukambe/samiyah",
-      thumbnail: "images/thumbnails/volleyball-ss.jpg",
+      title: 'Volleyball',
+      description:
+        'A single page recruiting site for a high school volleyball player, built with Next.js.',
+      url: '',
+      repo: 'https://github.com/Nukambe/samiyah',
+      thumbnail: 'images/thumbnails/volleyball-ss.jpg',
     },
   ];
 
-  projects.forEach((project, index) => {
-    const article = document.createElement("article");
-    article.id = "project-" + index;
-    article.innerHTML = `
-    <style>
-        #project-${index}::before {
-        background-image: url(${project.thumbnail}), linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
-        }
-        #project-${index}:hover::before {
-        background-image: url(${project.thumbnail}), linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-        }
-    </style>
-    <h4>${project.title}</h4>
-    <p>${project.description}</p>
-    ${project.url ? `<a href="${project.url}" target="_blank" rel="noopener noreferrer">View the live project.</a>` : ""}
-    ${project.repo ? `<a href="${project.repo}" target="_blank" rel="noopener noreferrer">View the source code.</a>` : ""}
-    `;
+  const icon = (id) => `<svg aria-hidden="true" focusable="false"><use href="#${id}"></use></svg>`;
 
-    projectsList.appendChild(article);
-  });
-});
+  const linkRow = (project) => {
+    const links = [];
+
+    if (project.url) {
+      links.push(
+        `<a class="btn btn--sm btn--primary" href="${project.url}" target="_blank" rel="noopener noreferrer">Live site ${icon('i-external')}</a>`
+      );
+    }
+
+    if (project.repo) {
+      links.push(
+        `<a class="btn btn--sm btn--ghost" href="${project.repo}" target="_blank" rel="noopener noreferrer">${icon('i-code')} Source</a>`
+      );
+    }
+
+    return links.length
+      ? `<div class="card__links">${links.join('')}</div>`
+      : '<p class="card__note">Private repository</p>';
+  };
+
+  const markup = projects
+    .map(
+      (project) => `
+      <li class="reveal">
+        <article class="card">
+          <div class="card__media">
+            <img src="${project.thumbnail}" alt="Screenshot of ${project.title}" loading="lazy" decoding="async">
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">${project.title}</h3>
+            <p class="card__text">${project.description}</p>
+            ${linkRow(project)}
+          </div>
+        </article>
+      </li>`
+    )
+    .join('');
+
+  projectsList.insertAdjacentHTML('beforeend', markup);
+  document.dispatchEvent(new CustomEvent('content:rendered'));
+})();

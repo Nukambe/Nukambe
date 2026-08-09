@@ -1,133 +1,86 @@
-#projects {
-  background: linear-gradient(to bottom, #99AAb5, #99AAb5);
-}
-
-#projects-list {
+.projects {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 0;
-  margin: auto;
-  width: fit-content;
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: clamp(1rem, 2.2vw, 1.75rem);
 }
 
-article {
-  position: relative; /* Required for pseudo-element positioning */
-  border-radius: 10px; /* Rounded corners */
-  overflow: hidden; /* Prevent pseudo-element from overflowing */
-  color: white; /* Text color for contrast */
-  padding: 20px;
-  margin: 0;
-  width: 400px;
-  transition: all 0.2s ease-in-out;
+.card {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
 }
 
-article::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: overlay; /* Blend the dark color with the image */
-  filter: blur(2px); /* Apply the blur effect */
-  z-index: 1; /* Place it below the content */
-  transition: all 0.2s ease-in-out;
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--line-hi);
+  box-shadow: var(--shadow-lg);
 }
 
-article:hover {
-  transform: translateY(-5px); /* Slight lift on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
-}
-
-article:hover::before {
-  filter: blur(0);
-}
-
-article h4,
-article p,
-article a {
+/* Thumbnail --------------------------------------------- */
+.card__media {
   position: relative;
-  z-index: 2; /* Place content above the overlay */
-  margin: 0;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--line);
 }
 
-article h4 {
-  font-size: 28pt; /* Title font size */
-  color: #999; /* Gray text color */
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  filter: saturate(0.75) brightness(0.8);
+  transition: transform 0.5s var(--ease), filter 0.4s var(--ease);
 }
 
-article p {
-  font-size: 14pt; /* Body text font size */
-  color: #999; /* Gray text color */
-  line-height: 1.5; /* Improve readability */
-  margin-bottom: auto;
+.card:hover .card__media img {
+  transform: scale(1.04);
+  filter: none;
 }
 
-article:hover h4, article:hover p {
-  color: white;
+/* Body -------------------------------------------------- */
+.card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: clamp(1.25rem, 2.5vw, 1.6rem);
 }
 
-article a {
-  display: inline-block; /* Treat links as buttons */
-  font-size: 14pt; /* Font size for links */
-  color: #999;
-  text-decoration: none; /* Remove underline */
-  padding: 8px 12px; /* Add padding to links */
-  border-radius: 5px; /* Rounded corners for links */
-  transition: background-color 0.2s ease, color 0.2s ease; /* Smooth hover effect */
+.card__title {
+  font-size: var(--step-2);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
-article a:hover {
-  background-color: #99AAb5; /* Blue background on hover */
-  color: black; /* White text on hover */
+.card__text {
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
 }
 
-@media screen and (max-width: 1380px) {
-  article {
-    width: 300px;
-  }
+.card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
 }
 
-@media screen and (max-width: 1080px) {
-  #projects-list {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  article {
-    width: 360px;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  #projects-list {
-    display: flex;
-    flex-direction: column;
-    padding: 0 12px;
-    gap: 4px;
-  }
-
-  article {
-    width: 100%;
-    height: auto;
-    min-height: 250px;
-  }
-
-  article:hover {
-    transform: translateY(0); /* Slight lift on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
-  }
-
-  article h4, article p {
-    color: white;
-  }
-
-  article a {
-    text-decoration: underline;
-  }
+.card__note {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }

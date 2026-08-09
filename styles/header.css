@@ -1,134 +1,176 @@
-header {
-  width: 100%;
-}
-
-#socials {
-  display: flex;
-  justify-content: right;
-  gap: 16px;
-  list-style: none;
+.site-header {
   position: fixed;
-  right: 32px;
-  top: 8px;
+  inset: 0 0 auto 0;
   z-index: 200;
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease),
+    backdrop-filter 0.3s var(--ease);
 }
 
-#socials img {
-  height: 32px;
-  width: 32px;
-  background-color: white;
+.site-header.is-scrolled {
+  background: rgba(11, 12, 15, 0.72);
+  border-bottom-color: var(--line);
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
 }
 
-#socials #youtube-logo {
-  width: 38px;
-  border-radius: 8px;
-  border: 1px solid white;
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  height: var(--header-h);
 }
 
-#socials #github-logo {
-  border-radius: 16px;
-  border: 1px solid white;
+/* Brand ------------------------------------------------- */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-right: auto;
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-#socials #linkedin-logo {
-  border-radius: 4px;
-  border: 1px solid white;
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
-header nav {
-  position: fixed;
-  bottom: 8px;
-  box-sizing: border-box;
+.brand__name {
+  font-size: 0.95rem;
+  color: var(--text);
+  transition: color 0.2s var(--ease);
+}
+
+.brand:hover .brand__name {
+  color: var(--accent);
+}
+
+/* Nav --------------------------------------------------- */
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.nav__link {
+  position: relative;
+  display: block;
+  padding-block: 0.35rem;
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  transition: color 0.2s var(--ease);
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
   width: 100%;
-  margin: 0 auto;
-  z-index: 100;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s var(--ease);
 }
 
-header nav ul {
+.nav__link:hover,
+.nav__link.is-active {
+  color: var(--text);
+}
+
+.nav__link:hover::after,
+.nav__link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* Socials ----------------------------------------------- */
+.socials {
   display: flex;
-  justify-content: center;
   align-items: center;
-  list-style: none;
-  gap: 2rem;
-  padding: 12px 32px;
-  margin: auto;
-  background-color: rgba(54, 57, 63, 0.8);
-  border-radius: 10rem;
-  box-shadow: 1px 1px 1px black;
-  width: fit-content;
-  box-sizing: border-box;
-  transition: all 0.2s ease-in-out;
+  gap: 0.4rem;
 }
 
-header nav ul:hover {
-  background-color: rgba(54, 57, 63, 1);
+.social {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  color: var(--text-dim);
+  transition: color 0.2s var(--ease), background-color 0.2s var(--ease),
+    transform 0.2s var(--ease);
 }
 
-header nav button {
-  border: none;
-  background-color: unset;
-  font-size: 16pt;
-  cursor: pointer;
-  color: #999;
-  border-bottom: 4px solid transparent;
-  transition: all 0.2s ease-in-out;
+.social svg {
+  width: 18px;
+  height: 18px;
 }
 
-header nav button:hover {
-  border-bottom: 4px solid white;
-  color: white;
+.social:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
 }
 
-header nav li.mobile button {
-  background-color: #e0e0e0; /* Slightly darker background for a recessed look */
-  box-shadow: inset 2px 2px 6px rgba(255, 255, 255, 0.6), /* Light highlight on top-left */
-  inset -2px -2px 6px rgba(0, 0, 0, 0.4); /* Dark shadow on bottom-right */
-  border: 1px solid #b0b0b0; /* Subtle border for depth */
-  height: 48px;
-  width: 48px;
-  border-radius: 48px; /* Circular shape */
-  color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem; /* Adjust font size as needed */
-  cursor: pointer;
-  transition: all 0.2s ease; /* Smooth interaction */
-}
-
-header nav li.mobile button:hover {
-  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.6), /* Reverse light */
-  inset 2px 2px 6px rgba(0, 0, 0, 0.4); /* Reverse shadow */
-  background-color: #d0d0d0; /* Slightly darker background on press */
-}
-
-header nav li.mobile button:hover img {
-  transform: scale(1.2);
-}
-
-header img {
-  transition: all 0.2s ease-in-out;
-}
-
-@media screen and (max-width: 500px) {
-  header nav {
-    display: flex;
-    justify-content: right;
-
+/* Mobile: nav becomes a floating pill ------------------- */
+@media screen and (max-width: 700px) {
+  /* `backdrop-filter` on the header would make it the containing block for the
+     fixed nav pill below, so fall back to an opaque bar at this width. */
+  .site-header.is-scrolled {
+    background: rgba(11, 12, 15, 0.96);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
-  header nav ul {
-    width: 16px;
-    height: 16px;
-    font-weight: bold;
-    font-size: 24pt;
-    padding: 16px 16px;
-    border-radius: 64px;
-    margin: 32px;
-  }
-  header nav ul li {
+
+  .brand__name {
     display: none;
   }
-  header nav ul li.mobile {
-    display: block;
-   }
+
+  .nav {
+    position: fixed;
+    left: 50%;
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    z-index: 200;
+  }
+
+  .nav__list {
+    gap: 0.35rem;
+    padding: 0.4rem;
+    border: 1px solid var(--line-hi);
+    border-radius: var(--radius-pill);
+    background: rgba(20, 23, 29, 0.88);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    box-shadow: var(--shadow);
+  }
+
+  .nav__link {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-pill);
+    letter-spacing: 0.08em;
+  }
+
+  .nav__link::after {
+    display: none;
+  }
+
+  .nav__link.is-active {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
 }
