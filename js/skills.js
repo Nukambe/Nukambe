@@ -8,19 +8,28 @@
 
   const skills = [
     'Angular', 'React', 'Nextjs', 'Svelte', 'Tailwind', 'HTML', 'CSS',
+    'React Native', 'Expo',
     'Nodejs', 'NestJS', 'Spring Boot',
-    'JavaScript', 'TypeScript', 'Python', 'Java', 'C', 'Go',
+    'JavaScript', 'TypeScript', 'Python', 'Java', 'C', 'Cpp', 'Go',
     'PostgreSQL', 'SQLite', 'SQL',
-    'AWS', 'Docker', 'CICD', 'Kafka', 'RabbitMQ',
+    'AWS', 'Docker', 'Terraform', 'Jenkins', 'CICD', 'Kafka', 'RabbitMQ',
     'Unreal Engine', 'Pygame',
-    'Git', 'Shells',
+    'Git', 'Shells', 'Claude',
   ];
 
   // Display names that differ from their icon filename.
-  const labels = { Nextjs: 'Next.js', Nodejs: 'Node.js', CICD: 'CI/CD' };
+  const labels = { Nextjs: 'Next.js', Nodejs: 'Node.js', CICD: 'CI/CD', Cpp: 'C++' };
 
   // Everything else ships as a .png.
-  const extensions = { Java: 'webp' };
+  const extensions = {
+    Java: 'webp',
+    Claude: 'svg',
+    Cpp: 'svg',
+    Expo: 'svg',
+    Jenkins: 'svg',
+    'React Native': 'svg',
+    Terraform: 'svg',
+  };
 
   /* Deterministic variation — random values would reshuffle the cloud on every
      load and make the drift impossible to tune. Coprime cycle lengths keep the

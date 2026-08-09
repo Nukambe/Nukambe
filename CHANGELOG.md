@@ -9,6 +9,13 @@ Changes before the first entry below are not covered.
 
 ### Added
 
+- A highlights band under the hero calling out the Master's in AI Engineering
+  and the build-and-support practice, in place of a full education section. It
+  is deliberately not in the nav.
+- Six tools in the skills cloud: C++, React Native, Expo, Terraform, Jenkins,
+  and Claude. Icons come from [Devicon](https://devicon.dev) (MIT) and
+  [Simple Icons](https://simpleicons.org) (CC0), and are the first SVGs in
+  `images/skills/`, so `js/skills.js` now maps per-skill file extensions.
 - Design token system in `styles/styles.css`: custom properties for surfaces,
   lines, text, accent, a fluid type scale, spacing, radii, shadows, and easing.
 - Inter as the body typeface, paired with Oswald for display headings.
