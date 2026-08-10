@@ -1,0 +1,49 @@
+/* A slim band under the hero for the things that do not warrant a section
+   of their own. Deliberately not in the nav. */
+.highlights {
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+}
+
+.highlights__inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: clamp(1.75rem, 4vw, 3rem);
+}
+
+.highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+}
+
+.highlight__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex: none;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.highlight__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.highlight__title {
+  margin-bottom: 0.4rem;
+  font-size: var(--step-1);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  /* Keeps the longer title from orphaning its last word on narrow screens. */
+  text-wrap: balance;
+}
+
+.highlight__text {
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
