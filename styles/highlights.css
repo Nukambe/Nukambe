@@ -37,6 +37,8 @@
   font-size: var(--step-1);
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  /* Keeps the longer title from orphaning its last word on narrow screens. */
+  text-wrap: balance;
 }
 
 .highlight__text {

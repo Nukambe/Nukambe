@@ -10,8 +10,8 @@ Changes before the first entry below are not covered.
 ### Added
 
 - A highlights band under the hero calling out the Master's in AI Engineering
-  and the build-and-support practice, in place of a full education section. It
-  is deliberately not in the nav.
+  and the build, deploy, and support practice, in place of a full education
+  section. It is deliberately not in the nav.
 - Six tools in the skills cloud: C++, React Native, Expo, Terraform, Jenkins,
   and Claude. Icons come from [Devicon](https://devicon.dev) (MIT) and
   [Simple Icons](https://simpleicons.org) (CC0), and are the first SVGs in
